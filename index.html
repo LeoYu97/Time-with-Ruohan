@@ -243,7 +243,10 @@ body {
 <div id="app">
   <countdown></countdown>
 </div>
-
+<audio id="music" hidden="true" loop="loop">
+  <source src="music/StarRiver.mp3"
+          type="audio/mpeg">
+</audio>
 <script>
 /**************************
   COUNTDOWN COMPONENT
@@ -273,7 +276,7 @@ Vue.component('countdown', {
         <p class="value">{{ theTime.seconds }}</p>
         <p class="label">seconds</p>
       </div>
-      <p class="text">with you</p>
+      <p class="text" onclick="play()">with you</p>
     </div>
 
     <div v-show="expired" class="expired-timer timer">
@@ -340,7 +343,15 @@ Vue.component('countdown', {
    }
  }
 });
-
+function play() {
+  var audio = document.getElementById('music');
+  if (audio.paused) {
+    audio.play();
+  }else{
+    audio.pause();
+    //audio.currentTime = 0;//音乐从头播放
+  }
+}
 
 
 /**************************
