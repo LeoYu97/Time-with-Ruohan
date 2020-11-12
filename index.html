@@ -238,7 +238,7 @@ body {
 
 <script src="js/vue.min.js"></script>
 <script src="js/axios.min.js"></script>
-<script src="js/sakura.js"></script>
+<!--<script src="js/sakura.js"></script>-->
 
 <div id="app">
   <countdown></countdown>
@@ -352,9 +352,28 @@ Vue.component('countdown', {
 var app = new Vue({
   el: '#app'
 });
+  
+  var app = new Vue({
+  el: '#app'
+});
+function loadScript(url) {
+  var scrs = document.getElementsByTagName('script');
+  var last = scrs[scrs.length - 1];
+  var scr = document.createElement('script');
+  scr.src = url;
+  scr.async = true;
+  last.parentNode.insertBefore(scr, last);
+}
+
+var count = 0
   function play() {
   var audio = document.getElementById('music');
   if (audio.paused) {
+    if (audio.paused) {
+  	if (count < 3){
+    loadScript('js/sakura.js');
+    count++;
+  }
     audio.play();
   }else{
     audio.pause();
