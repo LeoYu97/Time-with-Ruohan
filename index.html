@@ -343,7 +343,16 @@ Vue.component('countdown', {
    }
  }
 });
-function play() {
+
+
+
+/**************************
+  ROOT COMPONENT
+ **************************/
+var app = new Vue({
+  el: '#app'
+});
+  function play() {
   var audio = document.getElementById('music');
   if (audio.paused) {
     audio.play();
@@ -352,14 +361,7 @@ function play() {
     //audio.currentTime = 0;//音乐从头播放
   }
 }
-
-
-/**************************
-  ROOT COMPONENT
- **************************/
-var app = new Vue({
-  el: '#app'
-});</script>
+</script>
 
 </body>
 </html>
